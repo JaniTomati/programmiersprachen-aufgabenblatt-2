@@ -48,7 +48,7 @@ Vec2 operator * (Mat2 const& m, Vec2 const& v) {
 gleich der Anzahl der Zeilen der zweiten Matrix ist */
 void operator * (Vec2 const& v, Mat2 const& m){
 	std::cout << "Wenn v eine 2 x 1-Matrix ist, so muss B eine 1 x l-Matrix sein! Eine Multiplikation ist nicht möglich." <<std::endl;
-
+	return;
 }
 
 Mat2 operator * (float a, Mat2 const& m) {
