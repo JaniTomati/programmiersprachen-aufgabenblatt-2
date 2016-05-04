@@ -348,6 +348,110 @@ TEST_CASE("describe_operator_mat_*", "[Mat2]") {
 
 }
 
+TEST_CASE("describe_operator_matvec_*", "[Mat2]") {
+	Mat2 mt1 {};
+	Mat2 mt2 {2.0f, 3.0f, 4.0f, 5.0f};
+	Mat2 mt3 {-3.0f, 5.0f, 0.0f, -1.0f};
+	Mat2 mt4 {-4.2, 6.9f, 1.2f, -2.8f};
+	Vec2 vc1 {};
+	Vec2 vc2 {5.0f, 3.0f};
+	Vec2 vc3 {4.2f, 6.9f};
+	Vec2 vc4 {1.0f, 2.0f};
+
+	Vec2 vm22 = mt2 * vc2;
+	REQUIRE(vm22.x == 19);
+	REQUIRE(vm22.y == 35);
+
+}
+
+TEST_CASE("describe_operator_vecmat_*", "[Mat2]") {
+	Mat2 mt1 {};
+	Mat2 mt2 {2.0f, 3.0f, 4.0f, 5.0f};
+	Vec2 vc1 {};
+	Vec2 vc2 {5.0f, 3.0f};
+
+	vc2 * mt2; // Multiplikation von Vektor + 2x2 Matrix ist nicht moeglich 
+}
+
+TEST_CASE("describe_function_determinate", "[Mat2]") {
+	Mat2 mt1 {};
+	REQUIRE(mt1.det() == 1.0f);
+
+	Mat2 mt2 {2.0f, 3.0f, 0.0f, 5.0f};
+	REQUIRE(mt2.det() == 10.0f);
+
+	Mat2 mt3 {-4.2, 6.9f, 1.2f, -2.8f};
+	REQUIRE(mt3.det() == Approx(3.48f));
+
+	Mat2 mt4 {-0.4f, 3.23f, 9.75f, 2.13};
+	REQUIRE(mt4.det() == Approx(-32.3445));
+}
+
+TEST_CASE("describe_function_inverse", "[Mat2]") {
+	Mat2 mt1 {2.0f, 3.0f, 4.0f, 5.0f};
+	Mat2 mt1_i = inverse(mt1);
+	REQUIRE(mt1_i.a == Approx(-2.5f));
+	REQUIRE(mt1_i.b == Approx(1.5f));
+	REQUIRE(mt1_i.c == Approx(2.0f));
+	REQUIRE(mt1_i.d == Approx(-1.0f));
+
+	Mat2 mt2_i = inverse(Mat2{0.0f, 0.0f, 0.0f, 0.0f}); // Fehlermeldung 
+
+	Mat2 mt3 {-4.2, 6.9f, 1.2f, -2.8f};
+	Mat2 mt3_i = inverse(mt3);
+	REQUIRE(mt3_i.a == Approx(-0.8046f));
+	REQUIRE(mt3_i.b == Approx(-1.9827586f));
+	REQUIRE(mt3_i.c == Approx(-0.34482759f));
+	REQUIRE(mt3_i.d == Approx(-1.20689655f));
+
+}
+
+TEST_CASE("describe_function_transpose", "[Mat2]"){
+	Mat2 m1 {2.0f, 3.0f, 4.0f, 5.0f};
+	Mat2 m1_t = transpose(m1);
+	REQUIRE(m1_t.a == 2.0f);
+	REQUIRE(m1_t.b == 4.0f);
+	REQUIRE(m1_t.c == 3.0f);
+	REQUIRE(m1_t.d == 5.0f);
+
+	Mat2 m2 {-4.2, 6.9f, 1.2f, -2.8f};
+	Mat2 m2_t = transpose(m2);
+	REQUIRE(m2_t.a == -4.2f);
+	REQUIRE(m2_t.b == 1.2f);
+	REQUIRE(m2_t.c == 6.9f);
+	REQUIRE(m2_t.d == -2.8f);
+
+	Mat2 m3 {-3.0f, 5.0f, 0.0f, -1.0f};
+	Mat2 m3_t = transpose(m3);
+	REQUIRE(m3_t.a == -3.0f);
+	REQUIRE(m3_t.b == 0.0f);
+	REQUIRE(m3_t.c == 5.0f);
+	REQUIRE(m3_t.d == -1.0f);
+
+}
+
+TEST_CASE("describe_function_rotate", "[Mat2]") {
+	Mat2 m1 = make_rotation_mat2(4.0f);
+	REQUIRE(m1.a == Approx(-0.65364f));
+	REQUIRE(m1.b == Approx(0.7568f));
+	REQUIRE(m1.c == Approx(-0.7568f));
+	REQUIRE(m1.d == Approx(-0.65364f));
+
+	Mat2 m2 = make_rotation_mat2(1.0f);
+	REQUIRE(m2.a == Approx(0.54030f));
+	REQUIRE(m2.b == Approx(-0.841470f));
+	REQUIRE(m2.c == Approx(0.841470f));
+	REQUIRE(m2.d == Approx(0.54030f));
+
+	Mat2 m3 = make_rotation_mat2(2.34f);
+	REQUIRE(m3.a == Approx(-0.695563f));
+	REQUIRE(m3.b == Approx(-0.7184648f));
+	REQUIRE(m3.c == Approx(0.7184648f));
+	REQUIRE(m3.d == Approx(-0.695563f));
+
+
+}
+
 // * --------------- Main --------------- * //
 
 int main(int argc, char *argv[]) {
