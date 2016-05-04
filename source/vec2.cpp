@@ -73,6 +73,7 @@ Vec2 operator / (Vec2 const& v, float s) {
 	if (s == 0.0f) {
 		std::cout << "/!\\ Die Teilung durch 0 ist nicht erlaubt!" << std::endl;
 	}
+	
 	else {
 		return Vec2 {v.x / s, v.y / s};
 	}

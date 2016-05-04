@@ -1,4 +1,4 @@
-// vec2.hpp
+// vec2.hpp (Programmiersprachen Aufgabenblatt 2)
 
 #ifndef VEC2_HPP
 #define VEC2_HPP
@@ -6,12 +6,15 @@
 // Vec2 class definition 
 class Vec2 {
 public: 
-	Vec2(); // default Konstruktor 
+	// Konstruktoren 
+	Vec2(); 
 	Vec2(float x, float y);
-	// ... 
+	
+	// Memebervariablen
 	float x; 
 	float y;
 
+	// Memberfunktionen
 	Vec2& operator += (Vec2 const& v);
 	Vec2& operator -= (Vec2 const& v);
 	Vec2& operator *= (float v);

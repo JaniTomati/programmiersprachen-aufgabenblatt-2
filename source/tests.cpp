@@ -1,10 +1,11 @@
-// test.cpp (Programmiersprachen Aufgabenblatt 2)
+// tests.cpp (Programmiersprachen Aufgabenblatt 2)
 
 #define CATCH_CONFIG_RUNNER
 #include <catch.hpp>
 #include "vec2.hpp"
+#include "mat2.hpp"
 
-// * --------------- Tests --------------- * //
+// * --------------- VEC2-Tests --------------- * //
 
 	// Test_Cases: a = a + b
 TEST_CASE("describe_operator_+=", "[Vec2]") {
@@ -33,6 +34,10 @@ TEST_CASE("describe_operator_+=", "[Vec2]") {
 	vc5 += Vec2 {-2.25f, 3.0f};
 	REQUIRE(vc5.x == -3.25f);
 	REQUIRE(vc5.y == 1.0f);
+
+	Vec2 vc {};
+	REQUIRE(vc.x == 0.0f);
+	REQUIRE(vc.y == 0.0f);
 }
 
 	// Test_Cases: a = a - b
@@ -274,6 +279,32 @@ TEST_CASE("describe_operator_division", "[Vec2]") {
 	REQUIRE(vcd5.y == Approx(0.533333f));
 }
 
+// * --------------- MAT2-Tests --------------- * /
+
+TEST_CASE("describe_operator_mat_*=", "[Mat2]") {
+	Mat2 mt1 {};
+	Mat2 mt2 {2.0f, 3.0f, 4.0f, 5.0f};
+	Mat2 mt3 {-3.0f, 5.0f, 0.0f, -1.0f};
+
+	mt1 *= mt2; 
+	REQUIRE(mt1.a == 2.0f);
+	REQUIRE(mt1.b == 3.0f);
+	REQUIRE(mt1.c == 4.0f);
+	REQUIRE(mt1.d == 5.0f);
+
+	mt2 *= mt2; 
+	REQUIRE(mt2.a == 16.0f);
+	REQUIRE(mt2.b == 21.0f);
+	REQUIRE(mt2.c == 28.0f);
+	REQUIRE(mt2.d == 37.0f);
+
+	mt3 *= mt1;
+	REQUIRE(mt3.a == 14.0f);
+	REQUIRE(mt3.b == 16.0f);
+	REQUIRE(mt3.c == -4.0f);
+	REQUIRE(mt3.d == -5.0f);
+
+}
 
 // * --------------- Main --------------- * //
 
