@@ -4,7 +4,7 @@
 
 int main(int argc, char* argv[])
 {
-  Window win{std::make_pair(800,800)};
+  Window win{std::make_pair(600,600)};
 
   while (!win.should_close()) {
     if (win.is_key_pressed(GLFW_KEY_ESCAPE)) {
