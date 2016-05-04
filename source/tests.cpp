@@ -281,10 +281,12 @@ TEST_CASE("describe_operator_division", "[Vec2]") {
 
 // * --------------- MAT2-Tests --------------- * /
 
+	// Test_Case: mat_a = mat_a * mat_b
 TEST_CASE("describe_operator_mat_*=", "[Mat2]") {
 	Mat2 mt1 {};
 	Mat2 mt2 {2.0f, 3.0f, 4.0f, 5.0f};
 	Mat2 mt3 {-3.0f, 5.0f, 0.0f, -1.0f};
+	Mat2 mt4 {-4.2, 6.9f, 1.2f, -2.8f};
 
 	mt1 *= mt2; 
 	REQUIRE(mt1.a == 2.0f);
@@ -303,6 +305,46 @@ TEST_CASE("describe_operator_mat_*=", "[Mat2]") {
 	REQUIRE(mt3.b == 16.0f);
 	REQUIRE(mt3.c == -4.0f);
 	REQUIRE(mt3.d == -5.0f);
+
+	mt4 *= mt1;
+	REQUIRE(mt4.a == 19.2f);
+	REQUIRE(mt4.b == Approx(21.9f)); // test kept failing without Approx();
+	REQUIRE(mt4.c == Approx(-8.8f)); // test kept failing without Approx();
+	REQUIRE(mt4.d == -10.4f);
+
+
+}
+
+	// Test_Case: mat_c = mat_a * mat_b
+TEST_CASE("describe_operator_mat_*", "[Mat2]") {
+	Mat2 mt1 {};
+	Mat2 mt2 {2.0f, 3.0f, 4.0f, 5.0f};
+	Mat2 mt3 {-3.0f, 5.0f, 0.0f, -1.0f};
+	Mat2 mt4 {-4.2, 6.9f, 1.2f, -2.8f};
+
+	Mat2 mt12 = mt1 * mt2;
+	REQUIRE(mt12.a == 2.0f);
+	REQUIRE(mt12.b == 3.0f);
+	REQUIRE(mt12.c == 4.0f);
+	REQUIRE(mt12.d == 5.0f);
+
+	Mat2 mt22 = mt2 * mt2;
+	REQUIRE(mt22.a == 16.0f);
+	REQUIRE(mt22.b == 21.0f);
+	REQUIRE(mt22.c == 28.0f);
+	REQUIRE(mt22.d == 37.0f);
+
+	Mat2 mt32 = mt3 * mt2;
+	REQUIRE(mt32.a == 14.0f);
+	REQUIRE(mt32.b == 16.0f);
+	REQUIRE(mt32.c == -4.0f);
+	REQUIRE(mt32.d == -5.0f); 
+
+	Mat2 mt42 = mt4 * mt2;
+	REQUIRE(mt42.a == 19.2f);
+	REQUIRE(mt42.b == Approx(21.9f)); // test kept failing without Approx();
+	REQUIRE(mt42.c == Approx(-8.8f)); // test kept failing without Approx();
+	REQUIRE(mt42.d == -10.4f);
 
 }
 
