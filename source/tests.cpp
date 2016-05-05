@@ -4,6 +4,7 @@
 #include <catch.hpp>
 #include "vec2.hpp"
 #include "mat2.hpp"
+#include "circle.hpp"
 
 // * --------------- VEC2-Tests --------------- * //
 
@@ -449,6 +450,86 @@ TEST_CASE("describe_function_rotate", "[Mat2]") {
 	REQUIRE(m3.c == Approx(0.7184648f));
 	REQUIRE(m3.d == Approx(-0.695563f));
 
+}
+
+// * ------------- Circle-Tests ------------- * /
+
+TEST_CASE("describe_function_getDiameter", "[Circle]") {
+	Circle c1 {};
+	REQUIRE((c1.get_diameter()) == Approx(2.0f));
+
+	Circle c2 {{1.0, 2.5}, 3.2, {0.0, 0.0, 0.0}};
+	REQUIRE((c2.get_diameter()) == Approx(6.4f));
+
+	Circle c3 {{2.3, 10.2}, 4.2, {0.0, 0.0, 0.0}};
+	REQUIRE((c3.get_diameter()) == Approx(8.4f));
+
+	Circle c4  {{6.9, 4.6}, 6.9, {0.3, 1.0, 0.5}};
+	REQUIRE((c4.get_diameter()) == Approx(13.8f));
+
+}
+
+TEST_CASE("describe_function_getArea", "[Circle]") {
+	Circle c1 {};
+	REQUIRE((c1.get_area()) == Approx(3.14159f));
+
+	Circle c2 {{1.0, 2.5}, 3.2, {0.0, 0.0, 0.0}};
+	REQUIRE((c2.get_area()) == Approx(32.169901f));
+
+	Circle c3 {{2.3, 10.2}, 4.2, {0.0, 0.0, 0.0}};
+	REQUIRE((c3.get_area()) == Approx(55.41769441f));
+
+	Circle c4  {{6.9, 4.6}, 6.9, {0.3, 1.0, 0.5}};
+	REQUIRE((c4.get_area()) == Approx(149.5712262f));
+
+}
+
+TEST_CASE("describe_function_getcircumference", "[Circle]") {
+	Circle c1 {};
+	REQUIRE((c1.get_circumference()) == Approx(6.2831f));
+
+	Circle c2 {{1.0, 2.5}, 3.2, {0.0, 0.0, 0.0}};
+	REQUIRE((c2.get_circumference()) == Approx(20.106193f));
+
+	Circle c3 {{2.3, 10.2}, 4.2, {0.0, 0.0, 0.0}};
+	REQUIRE((c3.get_circumference()) == Approx(26.389378f));
+
+	Circle c4  {{6.9, 4.6}, 6.9, {0.3, 1.0, 0.5}};
+	REQUIRE((c4.get_circumference()) == Approx(43.3539786f));
+
+}
+
+TEST_CASE("describe_function_setRadius", "[Circle]") {
+	Circle c1 {};
+	c1.set_radius(3.2f);
+	REQUIRE((c1.get_radius()) == Approx(3.2f));
+
+	Circle c2 {{1.0, 2.5}, 3.2, {0.0, 0.0, 0.0}};
+	c2.set_radius(-4.3f);
+	REQUIRE((c2.get_radius()) == Approx(-4.3f));
+
+	Circle c3 {{2.3, 10.2}, 4.2, {0.0, 0.0, 0.0}};
+	c3.set_radius(6.9f);
+	REQUIRE((c3.get_radius()) == Approx(6.9f));
+
+	Circle c4 {{6.9, 4.6}, 6.9, {0.3, 1.0, 0.5}};
+	c4.set_radius(0.0f);
+	REQUIRE((c4.get_radius()) == Approx(0.0f));
+
+}
+
+TEST_CASE("describe_function_getRadius", "[Circle]") {
+	Circle c1 {};
+	REQUIRE((c1.get_radius()) == Approx(1.0f));
+
+	Circle c2 {{1.0, 2.5}, 3.2, {0.0, 0.0, 0.0}};
+	REQUIRE((c2.get_radius()) == Approx(3.2f));
+
+	Circle c3 {{2.3, 10.2}, 4.2, {0.0, 0.0, 0.0}};
+	REQUIRE((c3.get_radius()) == Approx(4.2f));
+
+	Circle c4 {{6.9, 4.6}, 6.9, {0.3, 1.0, 0.5}};
+	REQUIRE((c4.get_radius()) == Approx(6.9f));
 
 }
 
