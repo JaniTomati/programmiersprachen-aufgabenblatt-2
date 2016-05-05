@@ -500,6 +500,21 @@ TEST_CASE("describe_function_getcircumference", "[Circle]") {
 
 }
 
+TEST_CASE("describe_function_getRadius", "[Circle]") {
+	Circle c1 {};
+	REQUIRE((c1.get_radius()) == Approx(1.0f));
+
+	Circle c2 {{1.0, 2.5}, 3.2, {0.0, 0.0, 0.0}};
+	REQUIRE((c2.get_radius()) == Approx(3.2f));
+
+	Circle c3 {{2.3, 10.2}, 4.2, {0.0, 0.0, 0.0}};
+	REQUIRE((c3.get_radius()) == Approx(4.2f));
+
+	Circle c4 {{6.9, 4.6}, 6.9, {0.3, 1.0, 0.5}};
+	REQUIRE((c4.get_radius()) == Approx(6.9f));
+
+}
+
 TEST_CASE("describe_function_setRadius", "[Circle]") {
 	Circle c1 {};
 	c1.set_radius(3.2f);
@@ -519,18 +534,96 @@ TEST_CASE("describe_function_setRadius", "[Circle]") {
 
 }
 
-TEST_CASE("describe_function_getRadius", "[Circle]") {
+
+TEST_CASE("describe_function_getCenterCircle", "[Circle]") {
 	Circle c1 {};
-	REQUIRE((c1.get_radius()) == Approx(1.0f));
+	REQUIRE((c1.get_center().x) == Approx(0.0f));
+	REQUIRE((c1.get_center().y) == Approx(0.0f));
 
 	Circle c2 {{1.0, 2.5}, 3.2, {0.0, 0.0, 0.0}};
-	REQUIRE((c2.get_radius()) == Approx(3.2f));
+	REQUIRE((c2.get_center().x) == Approx(1.0f));
+	REQUIRE((c2.get_center().y) == Approx(2.5f));
 
 	Circle c3 {{2.3, 10.2}, 4.2, {0.0, 0.0, 0.0}};
-	REQUIRE((c3.get_radius()) == Approx(4.2f));
+	REQUIRE((c3.get_center().x) == Approx(2.3f));
+	REQUIRE((c3.get_center().y) == Approx(10.2f));
 
 	Circle c4 {{6.9, 4.6}, 6.9, {0.3, 1.0, 0.5}};
-	REQUIRE((c4.get_radius()) == Approx(6.9f));
+	REQUIRE((c4.get_center().x) == Approx(6.9f));
+	REQUIRE((c4.get_center().y) == Approx(4.6f));
+
+}
+
+TEST_CASE("describe_function_setCenterCircle", "[Circle]") {
+	Circle c1 {};
+	c1.set_center({3.2f, 0.4f});
+	REQUIRE((c1.get_center().x) == Approx(3.2f));
+	REQUIRE((c1.get_center().y) == Approx(0.4f));
+
+	Circle c2 {{1.0, 2.5}, 3.2, {0.0, 0.0, 0.0}};
+	c2.set_center({-4.3f, -2.5});
+	REQUIRE((c2.get_center().x) == Approx(-4.3f));
+	REQUIRE((c2.get_center().y) == Approx(-2.5f));
+
+	Circle c3 {{2.3, 10.2}, 4.2, {0.0, 0.0, 0.0}};
+	c3.set_center({6.9f, 4.2f});
+	REQUIRE((c3.get_center().x) == Approx(6.9f));
+	REQUIRE((c3.get_center().y) == Approx(4.2f));
+
+	Circle c4 {{6.9, 4.6}, 6.9, {0.3, 1.0, 0.5}};
+	c4.set_center({0.0f, 0.0f});
+	REQUIRE((c4.get_center().x) == Approx(0.0f));
+	REQUIRE((c4.get_center().y) == Approx(0.0f));
+
+}
+
+TEST_CASE("describe_function_getColorCircle", "[Circle]") {
+	Circle c1 {};
+	REQUIRE((c1.get_color().r) == Approx(0.0f));
+	REQUIRE((c1.get_color().g) == Approx(0.0f));
+	REQUIRE((c1.get_color().b) == Approx(0.0f));
+
+	Circle c2 {{1.0, 2.5}, 3.2, {0.0, 0.94, 0.3}};
+	REQUIRE((c2.get_color().r) == Approx(0.0f));
+	REQUIRE((c2.get_color().g) == Approx(0.94f));
+	REQUIRE((c2.get_color().b) == Approx(0.3f));
+
+	Circle c3 {{2.3, 10.2}, 4.2, {0.1, 0.24, 0.8}};
+	REQUIRE((c3.get_color().r) == Approx(0.1f));
+	REQUIRE((c3.get_color().g) == Approx(0.24f));
+	REQUIRE((c3.get_color().b) == Approx(0.8f));
+
+	Circle c4 {{6.9, 4.6}, 6.9, {0.3, 1.0, 0.5}};
+	REQUIRE((c4.get_color().r) == Approx(0.3f));
+	REQUIRE((c4.get_color().g) == Approx(1.0f));
+	REQUIRE((c4.get_color().b) == Approx(0.5f));
+
+}
+
+TEST_CASE("describe_function_setColorCircle", "[Circle]") {
+	Circle c1 {};
+	c1.set_color({0.2f, 0.3f, 0.4f});
+	REQUIRE((c1.get_color().r) == Approx(0.2f));
+	REQUIRE((c1.get_color().g) == Approx(0.3f));
+	REQUIRE((c1.get_color().b) == Approx(0.4f));
+
+	Circle c2 {{1.0, 2.5}, 3.2, {0.0, 0.94, 0.3}};
+	c2.set_color({0.0f, 0.0f, 0.0f});
+	REQUIRE((c2.get_color().r) == Approx(0.0f));
+	REQUIRE((c2.get_color().g) == Approx(0.0f));
+	REQUIRE((c2.get_color().b) == Approx(0.0f));
+
+	Circle c3 {{2.3, 10.2}, 4.2, {0.1, 0.24, 0.8}};
+	c3.set_color({0.34f, 0.25f, 0.12f});
+	REQUIRE((c3.get_color().r) == Approx(0.34f));
+	REQUIRE((c3.get_color().g) == Approx(0.25f));
+	REQUIRE((c3.get_color().b) == Approx(0.12f));
+
+	Circle c4 {{6.9, 4.6}, 6.9, {0.3, 1.0, 0.5}};
+	c4.set_color({0.3f, 1.0f, 0.5f});
+	REQUIRE((c4.get_color().r) == Approx(0.3f));
+	REQUIRE((c4.get_color().g) == Approx(1.0f));
+	REQUIRE((c4.get_color().b) == Approx(0.5f));
 
 }
 
@@ -581,36 +674,6 @@ TEST_CASE("describe_function_getDiagonal", "[Rectangle]") {
 
 }
 
-TEST_CASE("describe_function_getAside", "[Rectangle]") {
-	Rectangle r1 {};
-	REQUIRE((r1.get_aside()) == Approx(1.0f));
-
-	Rectangle r2 {{2.3, 10.2}, 4.2, 6.9, {0.0, 0.0, 0.0}};
-	REQUIRE((r2.get_aside()) == Approx(4.2f));
-
-	Rectangle r3 {{6.9, 4.6}, 10.37, 5.29, {0.3, 1.0, 0.5}};
-	REQUIRE((r3.get_aside()) == Approx(10.37f));
-
-	Rectangle r4 {{1.0, 2.5}, 3.2, 1.05, {0.0, 0.0, 0.0}};
-	REQUIRE((r4.get_aside()) == Approx(3.2f));
-
-}
-
-TEST_CASE("describe_function_getBside", "[Rectangle]") {
-	Rectangle r1 {};
-	REQUIRE((r1.get_bside()) == Approx(1.0f));
-
-	Rectangle r2 {{2.3, 10.2}, 4.2, 6.9, {0.0, 0.0, 0.0}};
-	REQUIRE((r2.get_bside()) == Approx(6.9f));
-
-	Rectangle r3 {{6.9, 4.6}, 10.37, 5.29, {0.3, 1.0, 0.5}};
-	REQUIRE((r3.get_bside()) == Approx(5.29f));
-
-	Rectangle r4 {{1.0, 2.5}, 3.2, 1.05, {0.0, 0.0, 0.0}};
-	REQUIRE((r4.get_bside()) == Approx(1.05f));
-
-}
-
 TEST_CASE("describe_function_setAside", "[Rectangle]") {
 	Rectangle r1 {};
 	r1.set_aside(3.33f);
@@ -627,6 +690,21 @@ TEST_CASE("describe_function_setAside", "[Rectangle]") {
 	Rectangle r4 {{1.0, 2.5}, 3.2, 1.05, {0.0, 0.0, 0.0}};
 	r4.set_aside(12.9f);
 	REQUIRE((r4.get_aside()) == Approx(12.9f));
+
+}
+
+TEST_CASE("describe_function_getAside", "[Rectangle]") {
+	Rectangle r1 {};
+	REQUIRE((r1.get_aside()) == Approx(1.0f));
+
+	Rectangle r2 {{2.3, 10.2}, 4.2, 6.9, {0.0, 0.0, 0.0}};
+	REQUIRE((r2.get_aside()) == Approx(4.2f));
+
+	Rectangle r3 {{6.9, 4.6}, 10.37, 5.29, {0.3, 1.0, 0.5}};
+	REQUIRE((r3.get_aside()) == Approx(10.37f));
+
+	Rectangle r4 {{1.0, 2.5}, 3.2, 1.05, {0.0, 0.0, 0.0}};
+	REQUIRE((r4.get_aside()) == Approx(3.2f));
 
 }
 
@@ -648,6 +726,114 @@ TEST_CASE("describe_function_setBside", "[Rectangle]") {
 	REQUIRE((r4.get_bside()) == Approx(12.9f));
 
 }
+
+TEST_CASE("describe_function_getBside", "[Rectangle]") {
+	Rectangle r1 {};
+	REQUIRE((r1.get_bside()) == Approx(1.0f));
+
+	Rectangle r2 {{2.3, 10.2}, 4.2, 6.9, {0.0, 0.0, 0.0}};
+	REQUIRE((r2.get_bside()) == Approx(6.9f));
+
+	Rectangle r3 {{6.9, 4.6}, 10.37, 5.29, {0.3, 1.0, 0.5}};
+	REQUIRE((r3.get_bside()) == Approx(5.29f));
+
+	Rectangle r4 {{1.0, 2.5}, 3.2, 1.05, {0.0, 0.0, 0.0}};
+	REQUIRE((r4.get_bside()) == Approx(1.05f));
+
+}
+
+TEST_CASE("describe_function_getCenterRectangle", "[Rectangle]") {
+	Rectangle r1 {};
+	REQUIRE((r1.get_center().x) == Approx(0.0f));
+	REQUIRE((r1.get_center().y) == Approx(0.0f));
+
+	Rectangle r2 {{2.3, 10.2}, 4.2, 6.9, {0.0, 0.0, 0.0}};
+	REQUIRE((r2.get_center().x) == Approx(2.3f));
+	REQUIRE((r2.get_center().y) == Approx(10.2f));
+
+	Rectangle r3 {{-6.9, 4.6}, 10.37, 5.29, {0.3, 1.0, 0.5}};
+	REQUIRE((r3.get_center().x) == Approx(-6.9f));
+	REQUIRE((r3.get_center().y) == Approx(4.6f));
+
+	Rectangle r4 {{1.0, 2.5}, 3.2, 1.05, {0.0, 0.0, 0.0}};
+	REQUIRE((r4.get_center().x) == Approx(1.0f));
+	REQUIRE((r4.get_center().y) == Approx(2.5f));
+
+}
+
+TEST_CASE("describe_function_setCenterRectangle", "[Rectangle]") {
+	Rectangle r1 {};
+	r1.set_center({3.2f, 0.4f});
+	REQUIRE((r1.get_center().x) == Approx(3.2f));
+	REQUIRE((r1.get_center().y) == Approx(0.4f));
+
+	Rectangle r2 {{1.0, 2.5}, 3.2, 4.3, {0.0, 0.0, 0.0}};
+	r2.set_center({-4.3f, -2.5});
+	REQUIRE((r2.get_center().x) == Approx(-4.3f));
+	REQUIRE((r2.get_center().y) == Approx(-2.5f));
+
+	Rectangle r3 {{2.3, 10.2}, 4.2, 10.12, {0.0, 0.0, 0.0}};
+	r3.set_center({6.9f, 4.2f});
+	REQUIRE((r3.get_center().x) == Approx(6.9f));
+	REQUIRE((r3.get_center().y) == Approx(4.2f));
+
+	Rectangle r4 {{6.9, 4.6}, 6.9, 9.21, {0.3, 1.0, 0.5}};
+	r4.set_center({0.0f, 0.0f});
+	REQUIRE((r4.get_center().x) == Approx(0.0f));
+	REQUIRE((r4.get_center().y) == Approx(0.0f));
+
+}
+
+TEST_CASE("describe_function_getColorRectangle", "[Rectangle]") {
+	Rectangle r1 {};
+	REQUIRE((r1.get_color().r) == Approx(0.0f));
+	REQUIRE((r1.get_color().g) == Approx(0.0f));
+	REQUIRE((r1.get_color().b) == Approx(0.0f));
+
+	Rectangle r2 {{1.0, 2.5}, 3.2, 4.3, {0.0f, 0.94f, 0.3f}};
+	REQUIRE((r2.get_color().r) == Approx(0.0f));
+	REQUIRE((r2.get_color().g) == Approx(0.94f));
+	REQUIRE((r2.get_color().b) == Approx(0.3f));
+
+	Rectangle r3 {{2.3, 10.2}, 4.2, 10.12, {0.9f, 0.3f, 0.7f}};
+	REQUIRE((r3.get_color().r) == Approx(0.9f));
+	REQUIRE((r3.get_color().g) == Approx(0.3f));
+	REQUIRE((r3.get_color().b) == Approx(0.7f));
+
+	Rectangle r4 {{6.9, 4.6}, 6.9, 3.2, {0.3f, 1.0f, 0.5f}};
+	REQUIRE((r4.get_color().r) == Approx(0.3f));
+	REQUIRE((r4.get_color().g) == Approx(1.0f));
+	REQUIRE((r4.get_color().b) == Approx(0.5f));
+
+}
+
+TEST_CASE("describe_function_setColorRectangle", "[Rectangle]") {
+	Rectangle r1 {};
+	r1.set_color({1.0f, 0.4f, 0.9f});
+	REQUIRE((r1.get_color().r) == Approx(1.0f));
+	REQUIRE((r1.get_color().g) == Approx(0.4f));
+	REQUIRE((r1.get_color().b) == Approx(0.9f));
+
+	Rectangle r2 {{1.0, 2.5}, 3.2, 4.3, {0.0f, 0.94f, 0.3f}};
+	r2.set_color({0.0f, 0.0f, 0.0f});
+	REQUIRE((r2.get_color().r) == Approx(0.0f));
+	REQUIRE((r2.get_color().g) == Approx(0.0f));
+	REQUIRE((r2.get_color().b) == Approx(0.0f));
+
+	Rectangle r3 {{2.3, 10.2}, 4.2, 10.12, {0.9f, 0.3f, 0.7f}};
+	r3.set_color({0.2f, 0.42f, 0.69f});
+	REQUIRE((r3.get_color().r) == Approx(0.2f));
+	REQUIRE((r3.get_color().g) == Approx(0.42f));
+	REQUIRE((r3.get_color().b) == Approx(0.69f));
+
+	Rectangle r4 {{6.9, 4.6}, 6.9, 3.2, {0.3f, 1.0f, 0.5f}};
+	r4.set_color({1.0f, 1.0f, 1.0f});
+	REQUIRE((r4.get_color().r) == Approx(1.0f));
+	REQUIRE((r4.get_color().g) == Approx(1.0f));
+	REQUIRE((r4.get_color().b) == Approx(1.0f));
+
+}
+
 
 // * --------------- Main --------------- * //
 
