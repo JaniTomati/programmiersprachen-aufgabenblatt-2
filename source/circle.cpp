@@ -4,7 +4,7 @@
 
 	// Default-Konstruktor
 Circle::Circle(): 
-ctr {0.0, 0.0}, r {1.0}, clr {0.0, 0.0, 0.0} {
+ctr {0.0f, 0.0f}, r {1.0f}, clr {0.0f, 0.0f, 0.0f} {
 
 }
 	

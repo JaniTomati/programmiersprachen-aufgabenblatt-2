@@ -5,6 +5,7 @@
 #include "vec2.hpp"
 #include "mat2.hpp"
 #include "circle.hpp"
+#include "rectangle.hpp"
 
 // * --------------- VEC2-Tests --------------- * //
 
@@ -280,7 +281,7 @@ TEST_CASE("describe_operator_division", "[Vec2]") {
 	REQUIRE(vcd5.y == Approx(0.533333f));
 }
 
-// * --------------- MAT2-Tests --------------- * /
+// * --------------- MAT2-Tests --------------- * //
 
 	// Test_Case: mat_a = mat_a * mat_b
 TEST_CASE("describe_operator_mat_*=", "[Mat2]") {
@@ -452,7 +453,7 @@ TEST_CASE("describe_function_rotate", "[Mat2]") {
 
 }
 
-// * ------------- Circle-Tests ------------- * /
+// * ------------- Circle-Tests ------------- * //
 
 TEST_CASE("describe_function_getDiameter", "[Circle]") {
 	Circle c1 {};
@@ -469,7 +470,7 @@ TEST_CASE("describe_function_getDiameter", "[Circle]") {
 
 }
 
-TEST_CASE("describe_function_getArea", "[Circle]") {
+TEST_CASE("describe_function_getAreaCircle", "[Circle]") {
 	Circle c1 {};
 	REQUIRE((c1.get_area()) == Approx(3.14159f));
 
@@ -530,6 +531,121 @@ TEST_CASE("describe_function_getRadius", "[Circle]") {
 
 	Circle c4 {{6.9, 4.6}, 6.9, {0.3, 1.0, 0.5}};
 	REQUIRE((c4.get_radius()) == Approx(6.9f));
+
+}
+
+// * ------------ Rectangle-Tests ------------ * //
+
+TEST_CASE("describe_function_getAreaRectangle", "[Rectangle]") {
+	Rectangle r1 {};
+	REQUIRE((r1.get_area()) == Approx(1.0f));
+
+	Rectangle r2 {{2.3, 10.2}, 4.2, 6.9, {0.0, 0.0, 0.0}};
+	REQUIRE((r2.get_area()) == Approx(28.98f));
+
+	Rectangle r3 {{6.9, 4.6}, 10.37, 5.29, {0.3, 1.0, 0.5}};
+	REQUIRE((r3.get_area()) == Approx(54.8573f));
+
+	Rectangle r4 {{1.0, 2.5}, 3.2, 1.05, {0.0, 0.0, 0.0}};
+	REQUIRE((r4.get_area()) == Approx(3.36f));
+
+}
+
+TEST_CASE("describe_function_getPerimeter", "[Rectangle]") {
+	Rectangle r1 {};
+	REQUIRE((r1.get_perimeter()) == Approx(4.0f));
+
+	Rectangle r2 {{2.3, 10.2}, 4.2, 6.9, {0.0, 0.0, 0.0}};
+	REQUIRE((r2.get_perimeter()) == Approx(22.2f));
+
+	Rectangle r3 {{6.9, 4.6}, 10.37, 5.29, {0.3, 1.0, 0.5}};
+	REQUIRE((r3.get_perimeter()) == Approx(31.32f));
+
+	Rectangle r4 {{1.0, 2.5}, 3.2, 1.05, {0.0, 0.0, 0.0}};
+	REQUIRE((r4.get_perimeter()) == Approx(8.5f));
+
+}
+
+TEST_CASE("describe_function_getDiagonal", "[Rectangle]") {
+	Rectangle r1 {};
+	REQUIRE((r1.get_diagonal()) == Approx(1.414213562f));
+
+	Rectangle r2 {{2.3, 10.2}, 4.2, 6.9, {0.0, 0.0, 0.0}};
+	REQUIRE((r2.get_diagonal()) == Approx(8.077747211f));
+
+	Rectangle r3 {{6.9, 4.6}, 10.37, 5.29, {0.3, 1.0, 0.5}};
+	REQUIRE((r3.get_diagonal()) == Approx(11.64134872f));
+
+	Rectangle r4 {{1.0, 2.5}, 3.2, 1.05, {0.0, 0.0, 0.0}};
+	REQUIRE((r4.get_diagonal()) == Approx(3.367862824f));
+
+}
+
+TEST_CASE("describe_function_getAside", "[Rectangle]") {
+	Rectangle r1 {};
+	REQUIRE((r1.get_aside()) == Approx(1.0f));
+
+	Rectangle r2 {{2.3, 10.2}, 4.2, 6.9, {0.0, 0.0, 0.0}};
+	REQUIRE((r2.get_aside()) == Approx(4.2f));
+
+	Rectangle r3 {{6.9, 4.6}, 10.37, 5.29, {0.3, 1.0, 0.5}};
+	REQUIRE((r3.get_aside()) == Approx(10.37f));
+
+	Rectangle r4 {{1.0, 2.5}, 3.2, 1.05, {0.0, 0.0, 0.0}};
+	REQUIRE((r4.get_aside()) == Approx(3.2f));
+
+}
+
+TEST_CASE("describe_function_getBside", "[Rectangle]") {
+	Rectangle r1 {};
+	REQUIRE((r1.get_bside()) == Approx(1.0f));
+
+	Rectangle r2 {{2.3, 10.2}, 4.2, 6.9, {0.0, 0.0, 0.0}};
+	REQUIRE((r2.get_bside()) == Approx(6.9f));
+
+	Rectangle r3 {{6.9, 4.6}, 10.37, 5.29, {0.3, 1.0, 0.5}};
+	REQUIRE((r3.get_bside()) == Approx(5.29f));
+
+	Rectangle r4 {{1.0, 2.5}, 3.2, 1.05, {0.0, 0.0, 0.0}};
+	REQUIRE((r4.get_bside()) == Approx(1.05f));
+
+}
+
+TEST_CASE("describe_function_setAside", "[Rectangle]") {
+	Rectangle r1 {};
+	r1.set_aside(3.33f);
+	REQUIRE((r1.get_aside()) == Approx(3.33f));
+
+	Rectangle r2 {{2.3, 10.2}, 4.2, 6.9, {0.0, 0.0, 0.0}};
+	r2.set_aside(10.94f);
+	REQUIRE((r2.get_aside()) == Approx(10.94f));
+
+	Rectangle r3 {{6.9, 4.6}, 10.37, 5.29, {0.3, 1.0, 0.5}};
+	r3.set_aside(2.75f);
+	REQUIRE((r3.get_aside()) == Approx(2.75f));
+
+	Rectangle r4 {{1.0, 2.5}, 3.2, 1.05, {0.0, 0.0, 0.0}};
+	r4.set_aside(12.9f);
+	REQUIRE((r4.get_aside()) == Approx(12.9f));
+
+}
+
+TEST_CASE("describe_function_setBside", "[Rectangle]") {
+	Rectangle r1 {};
+	r1.set_bside(3.33f);
+	REQUIRE((r1.get_bside()) == Approx(3.33f));
+
+	Rectangle r2 {{2.3, 10.2}, 4.2, 6.9, {0.0, 0.0, 0.0}};
+	r2.set_bside(10.94f);
+	REQUIRE((r2.get_bside()) == Approx(10.94f));
+
+	Rectangle r3 {{6.9, 4.6}, 10.37, 5.29, {0.3, 1.0, 0.5}};
+	r3.set_bside(2.75f);
+	REQUIRE((r3.get_bside()) == Approx(2.75f));
+
+	Rectangle r4 {{1.0, 2.5}, 3.2, 1.05, {0.0, 0.0, 0.0}};
+	r4.set_bside(12.9f);
+	REQUIRE((r4.get_bside()) == Approx(12.9f));
 
 }
 
