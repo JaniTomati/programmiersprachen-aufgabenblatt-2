@@ -6,17 +6,17 @@
 struct Color {
 
 	// Konstruktoren
-	color(): 
+	Color(): 
 	r {0.0}, g {0.0}, b {0.0} {
 
 	}
 
-	color(double c):
+	Color(double c):
 	r {c}, g {c}, b {c} {
 
 	}
 
-	color(double r_, double g_, double b_): 
+	Color(double r_, double g_, double b_): 
 	r {r_}, g {g_}, b {b_} {
 
 	}
