@@ -1,6 +1,8 @@
 // circle.cpp (Programmiersprachen Aufgabenblatt 2)
 #include <iostream>
 #include "circle.hpp"
+#include "vec2.hpp"
+#include "color.hpp"
 
 	// Default-Konstruktor
 Circle::Circle(): 
@@ -37,4 +39,23 @@ void Circle::set_radius(float r_) {
 	// Gibt den Radius des Kreises aus, auf dem die Funktion aufgerufen wird 
 float Circle::get_radius() const {
 	return r;
+}
+	
+	// Uebergibt einem Kreis einen neuen Mittelpunkt
+void Circle::set_center(Vec2 ctr_) {
+	ctr = ctr_;
+}
+
+	// Gibt den Mittelpunkt des Kreises aus, auf dem die Funktion aufgerufen wird 
+Vec2 Circle::get_center() const {
+	return ctr;
+}
+	// Uebergibt einem Kreis eine neue Farbe
+void Circle::set_color(Color clr_) {
+	clr = clr_;
+}
+
+// Gibt die Farbe eines Kreises aus, auf dem die Funktion aufgerufen wird 
+Color Circle::get_color() const {
+	return clr;
 }

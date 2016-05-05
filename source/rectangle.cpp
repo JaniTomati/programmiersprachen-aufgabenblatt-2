@@ -30,9 +30,19 @@ float Rectangle::get_diagonal() const {
 	return sqrt(a * a + b * b);
 }
 
+	// Setzt die Hoehe auf den eingegebenen Wert
+void Rectangle::set_aside(float a_) {
+	a = a_;
+}
+
 	// Gibt die Hoehe zurueck
 float Rectangle::get_aside() const {
 	return a;
+}
+
+	// Setzt die Breite auf den eingegebenen Wert 
+void Rectangle::set_bside(float b_) {
+	b = b_;
 }
 	
 	// Gibt die Breite zurueck
@@ -40,12 +50,22 @@ float Rectangle::get_bside() const {
 	return b;
 }
 	
-	// Setzt die Hoehe auf den eingegebenen Wert
-void Rectangle::set_aside(float a_) {
-	a = a_;
+	// Setzt einen neuen Mittelpunkt
+void Rectangle::set_center(Vec2 ctr_) {
+	ctr = ctr_;
 }
 
-	// Setzt die Breite auf den eingegebenen Wert 
-void Rectangle::set_bside(float b_) {
-	b = b_;
+	// Gibt den Mittelpunkt zurueck
+Vec2 Rectangle::get_center() const {
+	return ctr;
+}
+
+	// Setzt eine neue Farbe
+void Rectangle::set_color(Color clr_) {
+	clr = clr_;
+}
+
+	// Gibt die Farbe zurueck
+Color Rectangle::get_color() const {
+	return clr;
 }

@@ -5,6 +5,7 @@
 #define CIRCLE_HPP
 #include "vec2.hpp"
 #include "color.hpp"
+#include "window.hpp"
 #include <cmath>
 
 class Circle {
@@ -12,13 +13,18 @@ public:
 	// Konstruktoren
 	Circle();
 	Circle(Vec2 const& ctr, float r, Color const& clr);
+
 	// Memberfunktionen
-	void draw() const;
+	void draw(Window const& win) const;
 	float get_diameter() const;
 	float get_area() const; 
 	float get_circumference() const;
 	void set_radius(float r_); 
 	float get_radius() const; 
+	void set_center(Vec2 ctr_); 
+	Vec2 get_center() const;
+	void set_color(Color clr_);
+	Color get_color() const;
 
 private:
 	// Membervariablen
