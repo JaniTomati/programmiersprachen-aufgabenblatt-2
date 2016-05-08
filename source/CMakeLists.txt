@@ -15,6 +15,8 @@ add_dependencies(example glfw ${COPY_BINARY})
 
 # Build tests
 add_executable(tests
+  window.cpp
+  glew.c
   vec2.cpp
   mat2.cpp
   circle.cpp

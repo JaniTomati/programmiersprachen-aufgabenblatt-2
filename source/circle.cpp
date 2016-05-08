@@ -1,8 +1,6 @@
 // circle.cpp (Programmiersprachen Aufgabenblatt 2)
 #include <iostream>
 #include "circle.hpp"
-#include "vec2.hpp"
-#include "color.hpp"
 
 	// Default-Konstruktor
 Circle::Circle(): 
@@ -13,6 +11,13 @@ ctr {0.0f, 0.0f}, r {1.0f}, clr {0.0f, 0.0f, 0.0f} {
 	// Konstruktor (Uebergabeparameter: center, radius, color)
 Circle::Circle(Vec2 const& ctr_, float r_, Color const& clr_): 
 ctr {ctr_}, r {r_}, clr {clr_} {
+	if (r_ == 0.0f) {
+		std::cerr << "Der Radius muss groeßer Null sein!";
+	}
+
+	if (r_ < 0.0f) { // negativer Radius wird positiv gemacht
+		r_ *= (-1);
+	}
 
 }
 
@@ -42,7 +47,7 @@ float Circle::get_radius() const {
 }
 	
 	// Uebergibt einem Kreis einen neuen Mittelpunkt
-void Circle::set_center(Vec2 ctr_) {
+void Circle::set_center(Vec2 const& ctr_) {
 	ctr = ctr_;
 }
 
@@ -51,7 +56,7 @@ Vec2 Circle::get_center() const {
 	return ctr;
 }
 	// Uebergibt einem Kreis eine neue Farbe
-void Circle::set_color(Color clr_) {
+void Circle::set_color(Color const& clr_) {
 	clr = clr_;
 }
 
@@ -59,3 +64,7 @@ void Circle::set_color(Color clr_) {
 Color Circle::get_color() const {
 	return clr;
 }
+
+/* void Circle::draw(Window const& win, Circle const& c) const {
+	win.draw_point(c.get_center().x, c.get_center().y, 0.0f, 0.1f, 0.2f);
+} */

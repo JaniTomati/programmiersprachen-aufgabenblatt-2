@@ -51,7 +51,7 @@ float Rectangle::get_bside() const {
 }
 	
 	// Setzt einen neuen Mittelpunkt
-void Rectangle::set_center(Vec2 ctr_) {
+void Rectangle::set_center(Vec2 const& ctr_) {
 	ctr = ctr_;
 }
 
@@ -61,7 +61,7 @@ Vec2 Rectangle::get_center() const {
 }
 
 	// Setzt eine neue Farbe
-void Rectangle::set_color(Color clr_) {
+void Rectangle::set_color(Color const& clr_) {
 	clr = clr_;
 }
 

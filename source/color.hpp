@@ -7,22 +7,34 @@ struct Color {
 
 	// Konstruktoren
 	Color(): 
-	r {0.0}, g {0.0}, b {0.0} {
+	r {0.0f}, g {0.0f}, b {0.0f} {
 
 	}
 
-	Color(double c):
+	Color(float c):
 	r {c}, g {c}, b {c} {
 
 	}
 
-	Color(double r_, double g_, double b_): 
+	Color(float r_, float g_, float b_): // Werte ueber 1 und unter 0 werden automatisch auf 0 gesetzt
 	r {r_}, g {g_}, b {b_} {
+
+		if (r_ > 1 || r_ < 1) {
+			r_ = 0.0;
+		}
+
+		if (g_ > 1 || g_ < 1) {
+			g_ = 0.0;
+		}
+
+		if (b_ > 1 || b_ < 1) {
+			b_ = 0.0;
+		}
 
 	}
 
 	// Membervariablen
-	double r, g, b; // Wertebereich zwischen 0 und 1 einschraenken! 
+	float r, g, b; 
 
 };
 

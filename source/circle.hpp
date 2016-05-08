@@ -15,15 +15,16 @@ public:
 	Circle(Vec2 const& ctr, float r, Color const& clr);
 
 	// Memberfunktionen
+	void draw(Window const& win, Circle const& c) const;
 	void draw(Window const& win) const;
 	float get_diameter() const;
 	float get_area() const; 
 	float get_circumference() const;
 	void set_radius(float r_); 
 	float get_radius() const; 
-	void set_center(Vec2 ctr_); 
+	void set_center(Vec2 const& ctr_); 
 	Vec2 get_center() const;
-	void set_color(Color clr_);
+	void set_color(Color const& clr_);
 	Color get_color() const;
 
 private:

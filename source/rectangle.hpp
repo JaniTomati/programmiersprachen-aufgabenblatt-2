@@ -21,9 +21,9 @@ public:
 	float get_aside() const;
 	void set_bside(float b_);
 	float get_bside() const;
-	void set_center(Vec2 ctr_); 
+	void set_center(Vec2 const& ctr_); 
 	Vec2 get_center() const;
-	void set_color(Color clr_);
+	void set_color(Color const& clr_);
 	Color get_color() const;
 
 private:
