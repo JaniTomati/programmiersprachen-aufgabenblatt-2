@@ -627,8 +627,24 @@ TEST_CASE("describe_function_setColorCircle", "[Circle]") {
 	REQUIRE((c4.get_color().r) == Approx(0.3f));
 	REQUIRE((c4.get_color().g) == Approx(1.0f));
 	REQUIRE((c4.get_color().b) == Approx(0.5f));
+}
+
+
+TEST_CASE("describe_function_isInsideC", "[Circle]") {
+	Circle c1 {};
+	REQUIRE(c1.is_inside({0.1f, 0.1f}) == true);
+
+	Circle c2 {{1.0, 2.5}, 3.2, {0.0, 0.94, 0.3}};
+	REQUIRE(c2.is_inside({5.7f, 2.6f}) == false);
+
+	Circle c3 {{2.3, 10.2}, 4.2, {0.1, 0.24, 0.8}};
+	REQUIRE(c3.is_inside({2.4f, 10.3f}) == true);
+
+	Circle c4 {{6.9, 4.6}, 6.9, {0.3, 1.0, 0.5}};
+	REQUIRE(c4.is_inside({7.0f, 4.7f}) == true);
 
 }
+
 
 // * ------------ Rectangle-Tests ------------ * //
 
@@ -838,6 +854,21 @@ TEST_CASE("describe_function_setColorRectangle", "[Rectangle]") {
 	REQUIRE((r4.get_color().r) == Approx(1.0f));
 	REQUIRE((r4.get_color().g) == Approx(1.0f));
 	REQUIRE((r4.get_color().b) == Approx(1.0f));
+
+}
+
+TEST_CASE("describe_function_isInside", "[Rectangle]") {
+	Rectangle r1 {};
+	REQUIRE(r1.is_inside({1.0f, 1.0f}) == true);
+
+	Rectangle r2 {{1.0, 2.5}, 3.2, 4.3, {0.0f, 0.94f, 0.3f}};
+	REQUIRE(r2.is_inside({5.7f, 2.6f}) == false);
+
+	Rectangle r3 {{2.3, 10.2}, 4.2, 10.12, {0.9f, 0.3f, 0.7f}};
+	REQUIRE(r3.is_inside({1.2f, 2.3f}) == false);
+
+	Rectangle r4 {{6.9, 4.6}, 6.9, 3.2, {0.3f, 1.0f, 0.5f}};
+	REQUIRE(r4.is_inside({7.0f, 4.7f}) == true);
 
 }
 
