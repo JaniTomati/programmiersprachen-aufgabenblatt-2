@@ -5,13 +5,13 @@
 
 // Default-Konstruktor
 Rectangle::Rectangle():
-ctr {0.0f, 0.0f}, a {1.0f}, b {1.0f}, clr {0.0f, 0.0f, 0.0f} {
+cnr {0.0f, 0.0f}, a {1.0f}, b {1.0f}, clr {0.0f, 0.0f, 0.0f} {
 
 }
 
 // Konstruktor bekommt center, hoehe, breite und color uebergeben 
-Rectangle::Rectangle(Vec2 const& ctr_, float a_, float b_, Color const& clr_):
-ctr {ctr_}, a {a_}, b {b_}, clr {clr_} {
+Rectangle::Rectangle(Vec2 const& cnr_, float a_, float b_, Color const& clr_):
+cnr {cnr_}, a {a_}, b {b_}, clr {clr_} {
 
 	if (a_ == 0.0f) {
 		std::cerr << "/!\\ Die Seiten muessen laenger als 0 sein!" << std::endl;
@@ -86,13 +86,13 @@ float Rectangle::get_bside() const {
 }
 	
 	// Setzt einen neuen Mittelpunkt
-void Rectangle::set_center(Vec2 const& ctr_) {
-	ctr = ctr_;
+void Rectangle::set_corner(Vec2 const& cnr_) {
+	cnr = cnr_;
 }
 
 	// Gibt den Mittelpunkt zurueck
-Vec2 Rectangle::get_center() const {
-	return ctr;
+Vec2 Rectangle::get_corner() const {
+	return cnr;
 }
 
 	// Setzt eine neue Farbe
@@ -103,4 +103,30 @@ void Rectangle::set_color(Color const& clr_) {
 	// Gibt die Farbe zurueck
 Color Rectangle::get_color() const {
 	return clr;
+}
+
+	// Malt das Rechteck auf dem sie aufgerufen wird in dem Fenster das uebergeben wurde
+void Rectangle::draw(Window const& win) const {
+    win.draw_line(get_corner().x, get_corner().y, get_corner().x + get_bside(), get_corner().y, get_color().r, get_color().g, get_color().b);
+    win.draw_line(get_corner().x, get_corner().y, get_corner().x, get_corner().y + get_aside(), get_color().r, get_color().g, get_color().b);
+    win.draw_line(get_corner().x, get_corner().y + get_aside(), get_corner().x + get_bside(), get_corner().y + get_aside(), get_color().r, get_color().g, get_color().b);
+    win.draw_line(get_corner().x + get_bside(), get_corner().y, get_corner().x + get_bside(), get_corner().y + get_aside(), get_color().r, get_color().g, get_color().b);
+} 
+
+	// Malt das Rechteck auf dem sie aufgerufen wird in dem Fenster das uebergeben wurde und setzt neue eingegebene Farben
+void Rectangle::draw(Window const& win, Color const& clr_) const {
+	win.draw_line(get_corner().x, get_corner().y, get_corner().x + get_bside(), get_corner().y, clr_.r, clr_.g, clr_.b);
+    win.draw_line(get_corner().x, get_corner().y, get_corner().x, get_corner().y + get_aside(), clr_.r, clr_.g, clr_.b);
+    win.draw_line(get_corner().x, get_corner().y + get_aside(), get_corner().x + get_bside(), get_corner().y + get_aside(), clr_.r, clr_.g, clr_.b);
+    win.draw_line(get_corner().x + get_bside(), get_corner().y, get_corner().x + get_bside(), get_corner().y + get_aside(), clr_.r, clr_.g, clr_.b);
+
+}
+
+	// Prueft, ob ein Punkt im Rechteck liegt, auf dem die Funktion aufgerufen wurde
+bool Rectangle::is_inside(Vec2 const& v) const {
+	if (v.x >= cnr.x && v.y >= cnr.y && v.x <= cnr.x + b && v.y <= cnr.y + a) {
+		return true;
+	}
+
+	else return false;
 }

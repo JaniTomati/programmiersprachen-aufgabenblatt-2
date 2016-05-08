@@ -1,0 +1,148 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../external/GL/glew.h
+stddef.h
+-
+inttypes.h
+-
+stdint.h
+-
+inttypes.h
+-
+OpenGL/glu.h
+-
+GL/glu.h
+-
+
+../external/glfw-3.0.3/include/GLFW/glfw3.h
+stddef.h
+-
+OpenGL/gl3.h
+-
+OpenGL/gl.h
+-
+OpenGL/glu.h
+-
+GL/glcorearb.h
+-
+GLES/gl.h
+-
+GLES2/gl2.h
+-
+GLES3/gl3.h
+-
+GL/gl.h
+-
+GL/glu.h
+-
+
+/Users/JanaPuschmann/Documents/Universitätsunterlagen/Lehrmaterialien/2. Semester/Programmiersprachen/AB2/programmiersprachen-aufgabenblatt-2/source/circle.cpp
+iostream
+-
+circle.hpp
+/Users/JanaPuschmann/Documents/Universitätsunterlagen/Lehrmaterialien/2. Semester/Programmiersprachen/AB2/programmiersprachen-aufgabenblatt-2/source/circle.hpp
+
+/Users/JanaPuschmann/Documents/Universitätsunterlagen/Lehrmaterialien/2. Semester/Programmiersprachen/AB2/programmiersprachen-aufgabenblatt-2/source/circle.hpp
+vec2.hpp
+/Users/JanaPuschmann/Documents/Universitätsunterlagen/Lehrmaterialien/2. Semester/Programmiersprachen/AB2/programmiersprachen-aufgabenblatt-2/source/vec2.hpp
+mat2.hpp
+/Users/JanaPuschmann/Documents/Universitätsunterlagen/Lehrmaterialien/2. Semester/Programmiersprachen/AB2/programmiersprachen-aufgabenblatt-2/source/mat2.hpp
+color.hpp
+/Users/JanaPuschmann/Documents/Universitätsunterlagen/Lehrmaterialien/2. Semester/Programmiersprachen/AB2/programmiersprachen-aufgabenblatt-2/source/color.hpp
+window.hpp
+/Users/JanaPuschmann/Documents/Universitätsunterlagen/Lehrmaterialien/2. Semester/Programmiersprachen/AB2/programmiersprachen-aufgabenblatt-2/source/window.hpp
+cmath
+-
+
+/Users/JanaPuschmann/Documents/Universitätsunterlagen/Lehrmaterialien/2. Semester/Programmiersprachen/AB2/programmiersprachen-aufgabenblatt-2/source/color.hpp
+iostream
+-
+
+/Users/JanaPuschmann/Documents/Universitätsunterlagen/Lehrmaterialien/2. Semester/Programmiersprachen/AB2/programmiersprachen-aufgabenblatt-2/source/example.cpp
+window.hpp
+/Users/JanaPuschmann/Documents/Universitätsunterlagen/Lehrmaterialien/2. Semester/Programmiersprachen/AB2/programmiersprachen-aufgabenblatt-2/source/window.hpp
+utility
+-
+cmath
+-
+vector
+-
+rectangle.hpp
+/Users/JanaPuschmann/Documents/Universitätsunterlagen/Lehrmaterialien/2. Semester/Programmiersprachen/AB2/programmiersprachen-aufgabenblatt-2/source/rectangle.hpp
+vec2.hpp
+/Users/JanaPuschmann/Documents/Universitätsunterlagen/Lehrmaterialien/2. Semester/Programmiersprachen/AB2/programmiersprachen-aufgabenblatt-2/source/vec2.hpp
+mat2.hpp
+/Users/JanaPuschmann/Documents/Universitätsunterlagen/Lehrmaterialien/2. Semester/Programmiersprachen/AB2/programmiersprachen-aufgabenblatt-2/source/mat2.hpp
+circle.hpp
+/Users/JanaPuschmann/Documents/Universitätsunterlagen/Lehrmaterialien/2. Semester/Programmiersprachen/AB2/programmiersprachen-aufgabenblatt-2/source/circle.hpp
+color.hpp
+/Users/JanaPuschmann/Documents/Universitätsunterlagen/Lehrmaterialien/2. Semester/Programmiersprachen/AB2/programmiersprachen-aufgabenblatt-2/source/color.hpp
+
+/Users/JanaPuschmann/Documents/Universitätsunterlagen/Lehrmaterialien/2. Semester/Programmiersprachen/AB2/programmiersprachen-aufgabenblatt-2/source/mat2.cpp
+mat2.hpp
+/Users/JanaPuschmann/Documents/Universitätsunterlagen/Lehrmaterialien/2. Semester/Programmiersprachen/AB2/programmiersprachen-aufgabenblatt-2/source/mat2.hpp
+vec2.hpp
+/Users/JanaPuschmann/Documents/Universitätsunterlagen/Lehrmaterialien/2. Semester/Programmiersprachen/AB2/programmiersprachen-aufgabenblatt-2/source/vec2.hpp
+iostream
+-
+math.h
+-
+
+/Users/JanaPuschmann/Documents/Universitätsunterlagen/Lehrmaterialien/2. Semester/Programmiersprachen/AB2/programmiersprachen-aufgabenblatt-2/source/mat2.hpp
+vec2.hpp
+/Users/JanaPuschmann/Documents/Universitätsunterlagen/Lehrmaterialien/2. Semester/Programmiersprachen/AB2/programmiersprachen-aufgabenblatt-2/source/vec2.hpp
+
+/Users/JanaPuschmann/Documents/Universitätsunterlagen/Lehrmaterialien/2. Semester/Programmiersprachen/AB2/programmiersprachen-aufgabenblatt-2/source/rectangle.cpp
+iostream
+-
+rectangle.hpp
+/Users/JanaPuschmann/Documents/Universitätsunterlagen/Lehrmaterialien/2. Semester/Programmiersprachen/AB2/programmiersprachen-aufgabenblatt-2/source/rectangle.hpp
+
+/Users/JanaPuschmann/Documents/Universitätsunterlagen/Lehrmaterialien/2. Semester/Programmiersprachen/AB2/programmiersprachen-aufgabenblatt-2/source/rectangle.hpp
+vec2.hpp
+/Users/JanaPuschmann/Documents/Universitätsunterlagen/Lehrmaterialien/2. Semester/Programmiersprachen/AB2/programmiersprachen-aufgabenblatt-2/source/vec2.hpp
+color.hpp
+/Users/JanaPuschmann/Documents/Universitätsunterlagen/Lehrmaterialien/2. Semester/Programmiersprachen/AB2/programmiersprachen-aufgabenblatt-2/source/color.hpp
+window.hpp
+/Users/JanaPuschmann/Documents/Universitätsunterlagen/Lehrmaterialien/2. Semester/Programmiersprachen/AB2/programmiersprachen-aufgabenblatt-2/source/window.hpp
+cmath
+-
+
+/Users/JanaPuschmann/Documents/Universitätsunterlagen/Lehrmaterialien/2. Semester/Programmiersprachen/AB2/programmiersprachen-aufgabenblatt-2/source/vec2.cpp
+vec2.hpp
+/Users/JanaPuschmann/Documents/Universitätsunterlagen/Lehrmaterialien/2. Semester/Programmiersprachen/AB2/programmiersprachen-aufgabenblatt-2/source/vec2.hpp
+iostream
+-
+
+/Users/JanaPuschmann/Documents/Universitätsunterlagen/Lehrmaterialien/2. Semester/Programmiersprachen/AB2/programmiersprachen-aufgabenblatt-2/source/vec2.hpp
+
+/Users/JanaPuschmann/Documents/Universitätsunterlagen/Lehrmaterialien/2. Semester/Programmiersprachen/AB2/programmiersprachen-aufgabenblatt-2/source/window.cpp
+window.hpp
+/Users/JanaPuschmann/Documents/Universitätsunterlagen/Lehrmaterialien/2. Semester/Programmiersprachen/AB2/programmiersprachen-aufgabenblatt-2/source/window.hpp
+utility
+-
+cstring
+-
+iostream
+-
+cassert
+-
+
+/Users/JanaPuschmann/Documents/Universitätsunterlagen/Lehrmaterialien/2. Semester/Programmiersprachen/AB2/programmiersprachen-aufgabenblatt-2/source/window.hpp
+GL/glew.h
+-
+GLFW/glfw3.h
+-
+utility
+-
+array
+-
+string
+-
+

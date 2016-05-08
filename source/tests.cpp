@@ -751,43 +751,43 @@ TEST_CASE("describe_function_getBside", "[Rectangle]") {
 
 TEST_CASE("describe_function_getCenterRectangle", "[Rectangle]") {
 	Rectangle r1 {};
-	REQUIRE((r1.get_center().x) == Approx(0.0f));
-	REQUIRE((r1.get_center().y) == Approx(0.0f));
+	REQUIRE((r1.get_corner().x) == Approx(0.0f));
+	REQUIRE((r1.get_corner().y) == Approx(0.0f));
 
 	Rectangle r2 {{2.3, 10.2}, 4.2, 6.9, {0.0, 0.0, 0.0}};
-	REQUIRE((r2.get_center().x) == Approx(2.3f));
-	REQUIRE((r2.get_center().y) == Approx(10.2f));
+	REQUIRE((r2.get_corner().x) == Approx(2.3f));
+	REQUIRE((r2.get_corner().y) == Approx(10.2f));
 
 	Rectangle r3 {{-6.9, 4.6}, 10.37, 5.29, {0.3, 1.0, 0.5}};
-	REQUIRE((r3.get_center().x) == Approx(-6.9f));
-	REQUIRE((r3.get_center().y) == Approx(4.6f));
+	REQUIRE((r3.get_corner().x) == Approx(-6.9f));
+	REQUIRE((r3.get_corner().y) == Approx(4.6f));
 
 	Rectangle r4 {{1.0, 2.5}, 3.2, 1.05, {0.0, 0.0, 0.0}};
-	REQUIRE((r4.get_center().x) == Approx(1.0f));
-	REQUIRE((r4.get_center().y) == Approx(2.5f));
+	REQUIRE((r4.get_corner().x) == Approx(1.0f));
+	REQUIRE((r4.get_corner().y) == Approx(2.5f));
 
 }
 
 TEST_CASE("describe_function_setCenterRectangle", "[Rectangle]") {
 	Rectangle r1 {};
-	r1.set_center({3.2f, 0.4f});
-	REQUIRE((r1.get_center().x) == Approx(3.2f));
-	REQUIRE((r1.get_center().y) == Approx(0.4f));
+	r1.set_corner({3.2f, 0.4f});
+	REQUIRE((r1.get_corner().x) == Approx(3.2f));
+	REQUIRE((r1.get_corner().y) == Approx(0.4f));
 
 	Rectangle r2 {{1.0, 2.5}, 3.2, 4.3, {0.0, 0.0, 0.0}};
-	r2.set_center({-4.3f, -2.5});
-	REQUIRE((r2.get_center().x) == Approx(-4.3f));
-	REQUIRE((r2.get_center().y) == Approx(-2.5f));
+	r2.set_corner({-4.3f, -2.5});
+	REQUIRE((r2.get_corner().x) == Approx(-4.3f));
+	REQUIRE((r2.get_corner().y) == Approx(-2.5f));
 
 	Rectangle r3 {{2.3, 10.2}, 4.2, 10.12, {0.0, 0.0, 0.0}};
-	r3.set_center({6.9f, 4.2f});
-	REQUIRE((r3.get_center().x) == Approx(6.9f));
-	REQUIRE((r3.get_center().y) == Approx(4.2f));
+	r3.set_corner({6.9f, 4.2f});
+	REQUIRE((r3.get_corner().x) == Approx(6.9f));
+	REQUIRE((r3.get_corner().y) == Approx(4.2f));
 
 	Rectangle r4 {{6.9, 4.6}, 6.9, 9.21, {0.3, 1.0, 0.5}};
-	r4.set_center({0.0f, 0.0f});
-	REQUIRE((r4.get_center().x) == Approx(0.0f));
-	REQUIRE((r4.get_center().y) == Approx(0.0f));
+	r4.set_corner({0.0f, 0.0f});
+	REQUIRE((r4.get_corner().x) == Approx(0.0f));
+	REQUIRE((r4.get_corner().y) == Approx(0.0f));
 
 }
 

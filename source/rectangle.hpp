@@ -11,9 +11,10 @@ class Rectangle {
 public:
 	// Konstruktoren
 	Rectangle();
-	Rectangle(Vec2 const& ctr_, float a_, float b_, Color const& clr_);
+	Rectangle(Vec2 const& cnr_, float a_, float b_, Color const& clr_);
 	// Memberfunktionen 
-	void draw() const;
+	void draw(Window const& win) const;
+	void draw(Window const& win, Color const& clr_) const;
 	float get_area() const; 
 	float get_perimeter() const;
 	float get_diagonal() const;
@@ -21,14 +22,15 @@ public:
 	float get_aside() const;
 	void set_bside(float b_);
 	float get_bside() const;
-	void set_center(Vec2 const& ctr_); 
-	Vec2 get_center() const;
-	void set_color(Color const& clr_);
+	void set_corner(Vec2 const& cnr_); 
+	Vec2 get_corner() const;
+	void set_color(Color const& cnr_);
 	Color get_color() const;
+	bool is_inside(Vec2 const& v) const;
 
 private:
 	// Membervariablen
-	Vec2 ctr;
+	Vec2 cnr;
 	float a; // Hoehe
 	float b; // Breite
 	Color clr;

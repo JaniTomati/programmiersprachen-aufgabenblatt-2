@@ -70,11 +70,54 @@ void Circle::set_color(Color const& clr_) {
 	clr = clr_;
 }
 
-// Gibt die Farbe eines Kreises aus, auf dem die Funktion aufgerufen wird 
+	// Gibt die Farbe eines Kreises aus, auf dem die Funktion aufgerufen wird 
 Color Circle::get_color() const {
 	return clr;
 }
 
-void Circle::draw(Window const& win, Circle const& c) const {
-	win.draw_point(c.get_center().x, c.get_center().y, 0.0f, 0.1f, 0.2f);
-} 
+	// Malt den Kreis auf dem sie aufgerufen wird in dem Fenster das uebergeben wurde
+void Circle::draw(Window const& win) const {
+	win.draw_point(get_center().x, get_center().y, get_color().r, get_color().g, get_color().b); // Mittelpunkt
+
+    for (int i = 1; i <= 360; ++i) {
+        Vec2 start ((make_rotation_mat2(2 * M_PI * i / 360)) * Vec2(get_radius(), 0) + get_center());
+        Vec2 end ((make_rotation_mat2(2 * M_PI * (i + 1) / 360)) * Vec2(get_radius(), 0) + get_center());
+        win.draw_line(start.x, start.y, end.x, end.y, get_color().r, get_color().g, get_color().b);
+    }
+}
+
+	// Malt den Kreis auf dem sie aufgerufen wird in dem Fenster das uebergeben wurde und setzt neue eingegebene Farben
+void Circle::draw(Window const& win, Color const& clr_) const {
+	win.draw_point(get_center().x, get_center().y, get_color().r, get_color().g, get_color().b); // Mittelpunkt
+
+    for (int i = 1; i <= 360; ++i) {
+        Vec2 start ((make_rotation_mat2(2 * M_PI * i / 360)) * Vec2(get_radius(), 0) + get_center());
+        Vec2 end ((make_rotation_mat2(2 * M_PI * (i + 1) / 360)) * Vec2(get_radius(), 0) + get_center());
+        win.draw_line(start.x, start.y, end.x, end.y, clr_.r, clr_.g, clr_.b);
+    }
+
+}
+
+void Circle::draw_clock(Window const& win) const {
+    for (int i = 1; i <= 60; ++i) {
+        Vec2 start ((make_rotation_mat2(2 * M_PI * i / 60)) * Vec2(get_radius(), 0.0f) + get_center());
+        Vec2 end ((make_rotation_mat2(2 * M_PI * i / 60)) * Vec2(get_radius() - 0.02f, 0.0f) + get_center());
+        win.draw_line(start.x, start.y, end.x, end.y, 0.7f, 0.8f, 0.8f);
+    }
+
+    for (int i = 1; i <= 12; ++i) {
+        Vec2 start ((make_rotation_mat2(2 * M_PI * i / 12)) * Vec2(get_radius(), 0.0f) + get_center());
+        Vec2 end ((make_rotation_mat2(2 * M_PI * i / 12)) * Vec2(get_radius() - 0.1f, 0.0f) + get_center());
+        win.draw_line(start.x, start.y, end.x, end.y, get_color().r, get_color().g, get_color().b);
+    }
+}
+	
+	// Prueft, ob ein Punkt im Kreis liegt, auf dem die Funktion aufgerufen wurde
+bool Circle::is_inside(Vec2 const& v) const {
+	if (sqrt((v.x - ctr.x) * (v.x - ctr.x)) + ((v.y - ctr.y) * (v.y - ctr.y)) < r) {
+		return true;
+	}
+
+	else return false;
+
+}

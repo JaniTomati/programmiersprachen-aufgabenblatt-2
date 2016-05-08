@@ -2,6 +2,7 @@
 
 #ifndef COLOR_HPP
 #define COLOR_HPP
+#include <iostream>
 
 struct Color {
 
@@ -13,6 +14,12 @@ struct Color {
 
 	Color(float c):
 	r {c}, g {c}, b {c} {
+		if (c < 0 || c > 1) {
+			std::cerr << "Farbwerte muessen zwischen 0 und 1 liegen!" << std::endl;
+			r = 0.0;
+			g = 0.0;
+			b = 0.0;
+		}
 
 	}
 
