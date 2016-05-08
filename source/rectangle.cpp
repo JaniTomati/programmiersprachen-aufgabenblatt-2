@@ -13,6 +13,23 @@ ctr {0.0f, 0.0f}, a {1.0f}, b {1.0f}, clr {0.0f, 0.0f, 0.0f} {
 Rectangle::Rectangle(Vec2 const& ctr_, float a_, float b_, Color const& clr_):
 ctr {ctr_}, a {a_}, b {b_}, clr {clr_} {
 
+	if (a_ == 0.0f) {
+		std::cerr << "/!\\ Die Seiten muessen laenger als 0 sein!" << std::endl;
+		a = 1.0f; // wird auf Defaultlaenge 1 gesetzt
+	}
+
+	else if (a_ < 0.0f) { // negative Hoehe wird positiv gemacht
+		a = a_ * (-1);
+	}
+
+	if (b_ == 0.0f) {
+		std::cerr << "/!\\ Die Seiten muessen laenger als 0 sein!" << std::endl;
+		b = 1.0f; // wird auf Defaultlaenge 1 gesetzt
+	}
+
+	else if (b_ < 0.0f) { // negative Breite wird positiv gemacht
+		b = b_ * (-1);
+	}
 }
 
 	// Flacheninhalt: A = a * b
@@ -32,7 +49,16 @@ float Rectangle::get_diagonal() const {
 
 	// Setzt die Hoehe auf den eingegebenen Wert
 void Rectangle::set_aside(float a_) {
-	a = a_;
+	if (a_ == 0.0f) {
+		std::cerr << "/!\\ Die Seiten muessen laenger als 0 sein!" << std::endl;
+		a = 1.0f; // wird auf Defaultlaenge 1 gesetzt
+	}
+
+	else if (a_ < 0.0f) { // negative Hoehe wird positiv gemacht
+		a = a_ * (-1);
+	}
+
+	else a = a_;
 }
 
 	// Gibt die Hoehe zurueck
@@ -42,7 +68,16 @@ float Rectangle::get_aside() const {
 
 	// Setzt die Breite auf den eingegebenen Wert 
 void Rectangle::set_bside(float b_) {
-	b = b_;
+	if (b_ == 0.0f) {
+		std::cerr << "/!\\ Die Seiten muessen laenger als 0 sein!" << std::endl;
+		b = 1.0f; // wird auf Defaultlaenge 1 gesetzt
+	}
+
+	else if (b_ < 0.0f) { // negative Breite wird positiv gemacht
+		b = b_ * (-1);
+	}
+
+	else b = b_;
 }
 	
 	// Gibt die Breite zurueck

@@ -11,14 +11,15 @@ ctr {0.0f, 0.0f}, r {1.0f}, clr {0.0f, 0.0f, 0.0f} {
 	// Konstruktor (Uebergabeparameter: center, radius, color)
 Circle::Circle(Vec2 const& ctr_, float r_, Color const& clr_): 
 ctr {ctr_}, r {r_}, clr {clr_} {
+
 	if (r_ == 0.0f) {
-		std::cerr << "Der Radius muss groeßer Null sein!";
+		std::cerr << "/!\\ Der Radius muss groeßer Null sein!" << std::endl;
+		r = 1.0f; // Wird auf Defaultradius gesetzt
 	}
 
-	if (r_ < 0.0f) { // negativer Radius wird positiv gemacht
-		r_ *= (-1);
+	else if (r_ < 0.0f) { // negativer Radius wird positiv gemacht
+		r = r_ * (-1);
 	}
-
 }
 
 	// Durchmesser: D = 2 * r
@@ -38,7 +39,16 @@ float Circle::get_circumference() const {
 
 	// Uebergibt einem Kreis einen neuen Radius
 void Circle::set_radius(float r_) {
-	r = r_;
+	if (r_ == 0.0f) {
+		std::cerr << "/!\\ Der Radius muss groeßer Null sein!" << std::endl;
+		r = 1.0f; // Wird auf Defaultradius gesetzt
+	}
+
+	else if (r_ < 0.0f) { // negativer Radius wird positiv gemacht
+		r = r_ * (-1);
+	}
+
+	else r = r_;
 }
 
 	// Gibt den Radius des Kreises aus, auf dem die Funktion aufgerufen wird 
@@ -65,6 +75,6 @@ Color Circle::get_color() const {
 	return clr;
 }
 
-/* void Circle::draw(Window const& win, Circle const& c) const {
+void Circle::draw(Window const& win, Circle const& c) const {
 	win.draw_point(c.get_center().x, c.get_center().y, 0.0f, 0.1f, 0.2f);
-} */
+} 

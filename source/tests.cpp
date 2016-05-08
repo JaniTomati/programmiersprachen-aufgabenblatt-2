@@ -459,7 +459,7 @@ TEST_CASE("describe_function_getDiameter", "[Circle]") {
 	Circle c1 {};
 	REQUIRE((c1.get_diameter()) == Approx(2.0f));
 
-	Circle c2 {{1.0, 2.5}, 3.2, {0.0, 0.0, 0.0}};
+	Circle c2 {{1.0, 2.5}, -3.2, {0.0, 0.0, 0.0}};
 	REQUIRE((c2.get_diameter()) == Approx(6.4f));
 
 	Circle c3 {{2.3, 10.2}, 4.2, {0.0, 0.0, 0.0}};
@@ -467,6 +467,9 @@ TEST_CASE("describe_function_getDiameter", "[Circle]") {
 
 	Circle c4  {{6.9, 4.6}, 6.9, {0.3, 1.0, 0.5}};
 	REQUIRE((c4.get_diameter()) == Approx(13.8f));
+
+	Circle c5  {{6.9, 4.6}, 0.0, {0.3, 1.0, 0.5}}; // Fehlermeldung
+	REQUIRE((c5.get_radius()) == Approx(1.0f));
 
 }
 
@@ -517,12 +520,12 @@ TEST_CASE("describe_function_getRadius", "[Circle]") {
 
 TEST_CASE("describe_function_setRadius", "[Circle]") {
 	Circle c1 {};
-	c1.set_radius(3.2f);
+	c1.set_radius(-3.2f);
 	REQUIRE((c1.get_radius()) == Approx(3.2f));
 
 	Circle c2 {{1.0, 2.5}, 3.2, {0.0, 0.0, 0.0}};
 	c2.set_radius(-4.3f);
-	REQUIRE((c2.get_radius()) == Approx(-4.3f));
+	REQUIRE((c2.get_radius()) == Approx(4.3f));
 
 	Circle c3 {{2.3, 10.2}, 4.2, {0.0, 0.0, 0.0}};
 	c3.set_radius(6.9f);
@@ -530,7 +533,7 @@ TEST_CASE("describe_function_setRadius", "[Circle]") {
 
 	Circle c4 {{6.9, 4.6}, 6.9, {0.3, 1.0, 0.5}};
 	c4.set_radius(0.0f);
-	REQUIRE((c4.get_radius()) == Approx(0.0f));
+	REQUIRE((c4.get_radius()) == Approx(1.0f));
 
 }
 
@@ -633,10 +636,10 @@ TEST_CASE("describe_function_getAreaRectangle", "[Rectangle]") {
 	Rectangle r1 {};
 	REQUIRE((r1.get_area()) == Approx(1.0f));
 
-	Rectangle r2 {{2.3, 10.2}, 4.2, 6.9, {0.0, 0.0, 0.0}};
+	Rectangle r2 {{2.3, 10.2}, -4.2, 6.9, {0.0, 0.0, 0.0}};
 	REQUIRE((r2.get_area()) == Approx(28.98f));
 
-	Rectangle r3 {{6.9, 4.6}, 10.37, 5.29, {0.3, 1.0, 0.5}};
+	Rectangle r3 {{6.9, 4.6}, 10.37, -5.29, {0.3, 1.0, 0.5}};
 	REQUIRE((r3.get_area()) == Approx(54.8573f));
 
 	Rectangle r4 {{1.0, 2.5}, 3.2, 1.05, {0.0, 0.0, 0.0}};
@@ -691,6 +694,10 @@ TEST_CASE("describe_function_setAside", "[Rectangle]") {
 	r4.set_aside(12.9f);
 	REQUIRE((r4.get_aside()) == Approx(12.9f));
 
+	Rectangle r5 {{1.0, 2.5}, 3.2, 1.05, {0.0, 0.0, 0.0}};
+	r5.set_aside(0.0f);
+	REQUIRE((r5.get_aside()) == Approx(1.0f));
+
 }
 
 TEST_CASE("describe_function_getAside", "[Rectangle]") {
@@ -714,7 +721,7 @@ TEST_CASE("describe_function_setBside", "[Rectangle]") {
 	REQUIRE((r1.get_bside()) == Approx(3.33f));
 
 	Rectangle r2 {{2.3, 10.2}, 4.2, 6.9, {0.0, 0.0, 0.0}};
-	r2.set_bside(10.94f);
+	r2.set_bside(-10.94f);
 	REQUIRE((r2.get_bside()) == Approx(10.94f));
 
 	Rectangle r3 {{6.9, 4.6}, 10.37, 5.29, {0.3, 1.0, 0.5}};
@@ -837,7 +844,7 @@ TEST_CASE("describe_function_setColorRectangle", "[Rectangle]") {
 
 // * --------------- Main --------------- * //
 
-int main(int argc, char *argv[]) {
+int main(int argc, char * argv[]) {
 
   return Catch::Session().run(argc, argv);
 

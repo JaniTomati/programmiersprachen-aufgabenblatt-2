@@ -16,21 +16,24 @@ struct Color {
 
 	}
 
-	Color(float r_, float g_, float b_): // Werte ueber 1 und unter 0 werden automatisch auf 0 gesetzt
+		// Werte werden auf 0 gesetzt, sobald sie den gueltigen Wertebereich zwischen 0 und 1 verlassen haben
+	Color(float r_, float g_, float b_): 
 	r {r_}, g {g_}, b {b_} {
 
-		if (r_ > 1 || r_ < 1) {
-			r_ = 0.0;
+		if (r_ < 0 || r_ > 1) {
+			std::cerr << "Farbwerte muessen zwischen 0 und 1 liegen!" << std::endl;
+			r = 0.0;
 		}
 
-		if (g_ > 1 || g_ < 1) {
-			g_ = 0.0;
+		if (g_ < 0 || g_ > 1) {
+			std::cerr << "Farbwerte muessen zwischen 0 und 1 liegen!" << std::endl;
+			g = 0.0;
 		}
 
-		if (b_ > 1 || b_ < 1) {
-			b_ = 0.0;
+		if (b_ < 0 || b_ > 1) {
+			std::cerr << "Farbwerte muessen zwischen 0 und 1 liegen!" << std::endl;
+			b = 0.0;
 		}
-
 	}
 
 	// Membervariablen

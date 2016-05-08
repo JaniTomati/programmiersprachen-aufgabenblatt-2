@@ -29,8 +29,8 @@ public:
 private:
 	// Membervariablen
 	Vec2 ctr;
-	float a; // höhe
-	float b; // breite
+	float a; // Hoehe
+	float b; // Breite
 	Color clr;
 
 };
